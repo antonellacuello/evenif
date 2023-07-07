@@ -2,7 +2,7 @@ from django.test import TestCase
 
 class TestHome(TestCase):
     def setUp(self):
-        self.response == self.client.get('/')
+        self.response = self.client.get('/')
 
     def test_home(self):
         self.assertEqual(self.response.status_code, 200)
