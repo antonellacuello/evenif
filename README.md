@@ -11,7 +11,7 @@ Sistema do evento do IF que está sendo desenvolvido na disciplina de Desenvolvi
 6. Execute os testes 
 
 ``` console
-git clone https://github.com/XeanG/eventif.git
+git clone https://github.com/antonellacuello/eventif.git
 cd eventif
 python -m venv .eventif
 source .eventif/bin/activate 
