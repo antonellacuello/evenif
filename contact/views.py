@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from contact.forms import ContactForm
+from django.conf import settings
 
 def contact_view(request):
     if request.method == 'POST':
