@@ -10,7 +10,7 @@ def contact_view(request):
 
         
         _send_mail(
-            form.cleaned_data['subject'],
+            'Mensagem de Contato',
             settings.DEFAULT_FROM_EMAIL,
             form.cleaned_data['email'],
             'contact_email.txt',
@@ -22,7 +22,7 @@ def contact_view(request):
     else:
         form = ContactForm()
         return render(request, 'contact_form.html', {'form': form})
-        
+
 def _send_mail(subject, from_, to, template_name, context):
     body = render_to_string(template_name, context)
     mail.send_mail(subject, body, from_, [from_, to])
