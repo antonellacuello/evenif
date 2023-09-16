@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
+from django.template.loader import render_to_string
+from django.core import mail
+from django.contrib import messages
 from contact.forms import ContactForm
 from django.conf import settings
+
 
 def contact_view(request):
     if request.method == 'POST':
