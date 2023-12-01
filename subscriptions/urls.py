@@ -1,11 +1,11 @@
-from django.urls import path, include
-from core.views import home
-from subscriptions.views import subscribe
-from contact.views import contact_view
+from django.urls import path
+
+from subscriptions.views import new
+from subscriptions.views import detail
 
 app_name = 'subscriptions'
 
 urlpatterns = [
-    path('inscricao/', subscribe, name='new'),
-    path('incricao/<int:pk>/', detail)
+    path('', new, name='new'),
+    path('<int:pk>/', detail, name='detail'),
 ]
