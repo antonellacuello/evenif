@@ -61,7 +61,7 @@ def send_response_email(instance):
         'response': instance.response,
     }
 
-    message = render_to_string('response_email.txt', context)
+    message = render_to_string('contact_response.txt', context)
 
     mail.send_mail(subject, message, from_email, [from_email, to_email])
 
