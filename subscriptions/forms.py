@@ -1,14 +1,13 @@
-from django import forms 
-from subscriptions.models import Subscription
-from subscriptions.validators import validate_cpf
+from django import forms
 from django.core.exceptions import ValidationError
 
-class SubscriptionForm(forms.ModelForm):
+from subscriptions.models import Subscription
 
+
+class SubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscription
         fields = ['name', 'cpf', 'email', 'phone']
-
 
     def clean_name(self):
         name = self.cleaned_data['name']
@@ -17,6 +16,5 @@ class SubscriptionForm(forms.ModelForm):
 
     def clean(self):
         self.cleaned_data = super().clean()
-        if (not self.cleaned_data['email'] and \
-            not self.cleaned_data['phone']):
+        if not self.cleaned_data.get('email') and not self.cleaned_data.get('phone'):
             raise ValidationError('Informe seu email ou telefone')
