@@ -1,7 +1,6 @@
 from django.conf import settings
-from django.contrib import messages
 from django.core import mail
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string
 
@@ -51,6 +50,6 @@ def empty_form(request):
     )
 
 
-def _sendmail(subject, from_, to, template_name, context):
-     body = render_to_string(template_name, context)
-     mail.sendmail(subject, body, from_,  [from_, to])
+def _send_mail(subject, from_, to, template_name, context):
+    body = render_to_string(template_name, context)
+    mail.send_mail(subject, body, from_, [from_, to])
