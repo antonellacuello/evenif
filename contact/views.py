@@ -4,8 +4,10 @@ from django.core import mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template.loader import render_to_string
-
-from contact.forms import ContactForm
+from django.shortcuts import render, redirect
+from .forms import ContactForm
+from .models import Contact
+from django.conf import settings
 
 def contact_view(request):
     if request.method == 'POST':
@@ -20,6 +22,19 @@ def create_contact(request):
         return render(request, 'contact_form.html', {'form': form})
 
     send_contact_email(form.cleaned_data)
+    
+    contact = Contact(
+        name=form.cleaned_data['name'],
+        phone=form.cleaned_data['phone'],
+        email=form.cleaned_data['email'],
+        message=form.cleaned_data['message']
+    )
+    contact.save()
+
+    send_contact_email(form.cleaned_data)
+
+    messages.success(request, 'Contato realizado!')
+    return redirect('contato_sucesso')  # Supondo que você tenha uma página de sucesso chamada 'contato_sucesso'
 
     messages.success(request, 'Contato realizado!')
     return HttpResponseRedirect("/contact/")
@@ -36,3 +51,5 @@ def send_contact_email(contact_data):
 
     email_body = render_to_string(template_name, context)
     mail.send_mail(subject, email_body, from_email, [from_email, to_email])
+
+
