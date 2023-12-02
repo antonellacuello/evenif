@@ -50,3 +50,20 @@ def send_contact_email(contact_data):
     mail.send_mail(subject, email_body, from_email, [from_email, to_email])
 
 
+def return_contact_email(contact_data):
+    subject = 'Retorno de contato - eventif'
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to_email = contact_data['email']
+    
+    contato = Contact.objects.latest('id') 
+
+    context = {
+        'name': contato.name,
+        'email': contato.email,
+        'phone': contato.phone,
+        'message': contato.message,
+    }
+
+    message = render_to_string('contact_response.txt', context)
+
+    send_mail(subject, message, from_email, [to_email])
