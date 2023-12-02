@@ -21,12 +21,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from core.views import home, speaker_detail
-from contact.views import contact
+from contact.views import contact_view
 
 urlpatterns = [
     path('', home, name= 'home'),
     path('inscricao/', include('subscriptions.urls')),
     path('palestrantes/<slug:slug>/', speaker_detail, name='speaker_detail'),
-    path('contato/', contact),
+    path('contato/', contact_view),
     path("admin/", admin.site.urls),
 ] 
