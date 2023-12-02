@@ -6,7 +6,7 @@ class Contact(models.Model):
     email = models.EmailField()
     message = models.TextField()
     response = models.TextField(blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField('criado em', auto_now_add=True)
 
     def __str__(self):
         return self.name
