@@ -8,8 +8,6 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from .models import Contact
 from django.conf import settings
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 def contact_view(request):
     if request.method == 'POST':
@@ -67,9 +65,3 @@ def send_response_email(contact):
 
     send_mail(subject, message, from_email, [to_email])
 
-
-
-@receiver(post_save, sender=Contact)
-def send_response_email_on_save(sender, instance, created, **kwargs):
-    if created and instance.response:
-        send_response_email(instance)
