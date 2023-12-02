@@ -17,21 +17,21 @@ def create_contact(request):
     form = ContactForm(request.POST)
 
     if not form.is_valid():
-        return render(request, 'contact/contact_form.html', {'form': form})
+        return render(request, 'contact_form.html', {'form': form})
 
     send_contact_email(form.cleaned_data)
 
     messages.success(request, 'Contato realizado!')
-    return HttpResponseRedirect("/contato/")
+    return HttpResponseRedirect("/contact/")
 
 def show_contact_form(request):
-    return render(request, 'contact/contact_form.html', {'form': ContactForm()})
+    return render(request, 'contact_form.html', {'form': ContactForm()})
 
 def send_contact_email(contact_data):
     subject = 'Contato eventif'
     from_email = settings.DEFAULT_FROM_EMAIL
     to_email = contact_data['email']
-    template_name = 'contact/contact_email.txt'
+    template_name = 'contact_email.txt'
     context = contact_data
 
     email_body = render_to_string(template_name, context)
