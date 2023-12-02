@@ -12,8 +12,8 @@ class Speaker(models.Model):
         verbose_name = 'palestrante'
         verbose_name_plural = 'palestrantes'
 
-    def str(self):
+    def __str__(self):
         return self.name
-
+    
     def get_absolute_url(self):
-        return r('speaker_detail', slug=self.slug) 
+        return r('speaker_detail', slug=self.slug)
