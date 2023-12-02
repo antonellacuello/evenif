@@ -30,8 +30,7 @@ def create_contact(request):
         message=form.cleaned_data['message']
     )
     contact.save()
-
-    send_contact_email(form.cleaned_data)
+    return_contact_email(form.cleaned_data)
 
     messages.success(request, 'Contato realizado!')
     return HttpResponseRedirect("/contato/")
@@ -45,7 +44,7 @@ def send_contact_email(contact_data):
     to_email = contact_data['email']
     template_name = 'contact_email.txt'
     context = contact_data
-
+    
     email_body = render_to_string(template_name, context)
     mail.send_mail(subject, email_body, from_email, [from_email, to_email])
 
