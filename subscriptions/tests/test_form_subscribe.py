@@ -18,7 +18,7 @@ class SubscriptionFormTest(TestCase):
         self.assertFormErrorCode(form, 'cpf', 'length')
 
     def test_name_must_be_capitalized(self):
-        form = self.make_validated_form(name='ANTONELLA MANUELA GONZALEZ CUELLO')
+        form = self.make_validated_form({'name': 'ANTONELLA MANUELA GONZALEZ CUELLO'})
         self.assertEqual('Antonella Manuela Gonzalez Cuello', form.cleaned_data['name'])
 
     def test_email_is_optional(self):
@@ -26,7 +26,7 @@ class SubscriptionFormTest(TestCase):
         self.assertFalse(form.errors)
 
     def test_phone_is_optional(self):
-        form = self.make_validated_form(phone='')
+form = self.make_validated_form({'phone': ''})
         self.assertFalse(form.errors)
 
     def test_must_inform_email_or_phone(self):

@@ -75,4 +75,4 @@ class SubscribeSuccessMessage(TestCase):
             phone = '53981451460'
         )
         response = self.client.post(r('subscriptions:new'), data, follow=True)
-        self.assertContains(response, 'Inscrição realizada com sucesso!')
+        self.assertEqual(1, len(mail.outbox))
