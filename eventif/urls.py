@@ -27,6 +27,6 @@ urlpatterns = [
     path('', home, name= 'home'),
     path('inscricao/', include('subscriptions.urls')),
     path('palestrantes/<slug:slug>/', speaker_detail, name='speaker_detail'),
-    path('contact/', contact_view,name='contact'),
+    path('contato/', contact_view,name='contato'),
     path("admin/", admin.site.urls),
 ] 

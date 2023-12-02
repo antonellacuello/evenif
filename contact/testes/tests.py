@@ -16,13 +16,13 @@ class ContactViewTestes(TestCase):
             'email': 'antonella.cuello@aluno.riogrande.ifrs.edu.br',
             'message': 'HAHAHAHAHAHHAHAHAHAHAHA'
         }
-        response = self.client.post(reverse('contact'), data=form_data)
+        response = self.client.post(reverse('contato'), data=form_data)
         self.assertEqual(response.status_code, 302)  
         self.assertEqual(len(mail.outbox), 1)  
 
     def test_invalid_post_contact_form(self):
         form_data = {}  
-        response = self.client.post(reverse('contact'), data=form_data)
+        response = self.client.post(reverse('contato'), data=form_data)
         self.assertEqual(response.status_code, 200)  
         self.assertFormError(response, 'form', 'name', 'Este campo é obrigatório.')
         self.assertFormError(response, 'form', 'email', 'Este campo é obrigatório.')
