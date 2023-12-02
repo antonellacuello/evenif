@@ -24,9 +24,9 @@ class ContactViewTestes(TestCase):
         form_data = {}  
         response = self.client.post(reverse('contact'), data=form_data)
         self.assertEqual(response.status_code, 200)  
-        self.assertFormError(response, 'form', 'name', 'This field is required.')
-        self.assertFormError(response, 'form', 'email', 'This field is required.')
-        self.assertFormError(response, 'form', 'message', 'This field is required.')
+        self.assertFormError(response, 'form', 'name', 'Este campo é obrigatório.')
+        self.assertFormError(response, 'form', 'email', 'Este campo é obrigatório.')
+        self.assertFormError(response, 'form', 'message', 'Este campo é obrigatório.')
 
     def test_send_email(self):
         mail.send_mail(
