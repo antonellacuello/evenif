@@ -18,7 +18,7 @@ class ContactViewTestes(TestCase):
         }
         response = self.client.post(reverse('contato'), data=form_data)
         self.assertEqual(response.status_code, 302)  
-        self.assertEqual(len(mail.outbox), 2)  
+        self.assertEqual(len(mail.outbox), 1)  
 
     def test_invalid_post_contact_form(self):
         form_data = {}  
