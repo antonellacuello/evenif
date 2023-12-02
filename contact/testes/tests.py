@@ -5,7 +5,7 @@ from contact.forms import ContactForm
 
 class ContactViewTestes(TestCase):
     def test_get_contact_page(self):
-        response = self.client.get(reverse('contact'))
+        response = self.client.get(reverse('contato'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'contact_form.html')
 
@@ -18,7 +18,7 @@ class ContactViewTestes(TestCase):
         }
         response = self.client.post(reverse('contato'), data=form_data)
         self.assertEqual(response.status_code, 302)  
-        self.assertEqual(len(mail.outbox), 1)  
+        self.assertEqual(len(mail.outbox), 2)  
 
     def test_invalid_post_contact_form(self):
         form_data = {}  

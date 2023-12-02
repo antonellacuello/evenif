@@ -34,9 +34,6 @@ def create_contact(request):
     send_contact_email(form.cleaned_data)
 
     messages.success(request, 'Contato realizado!')
-    return redirect('contato_sucesso')  # Supondo que você tenha uma página de sucesso chamada 'contato_sucesso'
-
-    messages.success(request, 'Contato realizado!')
     return HttpResponseRedirect("/contato/")
 
 def show_contact_form(request):
