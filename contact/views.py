@@ -48,17 +48,17 @@ def send_contact_email(contact_data):
     mail.send_mail(subject, email_body, from_email, [from_email, to_email])
 
 
-def send_response_email(contact):
+def send_response_email(instance):
     subject = 'Resposta ao seu contato'
     from_email = settings.DEFAULT_FROM_EMAIL
-    to_email = contact.email
+    to_email = instance.email
     
     context = {
-        'name': contact.name,
-        'email': contact.email,
-        'phone': contact.phone,
-        'message': contact.message,
-        'response': contact.response,
+        'name': instance.name,
+        'email': instance.email,
+        'phone': instance.phone,
+        'message': instance.message,
+        'response': instance.response,
     }
 
     message = render_to_string('response_email.txt', context)
