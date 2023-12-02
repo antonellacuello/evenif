@@ -63,5 +63,5 @@ def send_response_email(instance):
 
     message = render_to_string('response_email.txt', context)
 
-    send_mail(subject, message, from_email, [to_email])
+    mail.send_mail(subject, message, from_email, [to_email])
 
