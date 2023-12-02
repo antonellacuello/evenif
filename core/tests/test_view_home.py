@@ -18,7 +18,7 @@ class TestHome(TestCase):
         self.assertContains(self.response, expect)
 
     def test_contact_link(self):
-        self.assertContains(self.response, 'href="/contact/"')
+        self.assertContains(self.response, 'href="/contato/"')
     
     def test_speakers(self):
         contents = [
