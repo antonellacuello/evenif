@@ -52,7 +52,6 @@ def send_response_email(instance):
     subject = 'Resposta ao seu contato'
     from_email = settings.DEFAULT_FROM_EMAIL
     to_email = instance.email
-    print(f'realmente deu')
     
     context = {
         'name': instance.name,
