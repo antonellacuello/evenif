@@ -65,4 +65,4 @@ def return_contact_email(contact_data):
 
     message = render_to_string('contact_response.txt', context)
 
-    send_mail(subject, message, from_email, [to_email])
+    mail.send_mail(subject, message, from_email, [to_email])
